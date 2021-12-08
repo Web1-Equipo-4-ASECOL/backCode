@@ -2,10 +2,15 @@ const mongoose = require('mongoose');
 const{ Schema } = mongoose;
 
 const compraSchema = new Schema({
-    nombre : {
+    user_compra : {
+        type: Schema.Types.ObjectId,
+        ref: 'usuario',
+        required: true
+    },
+    codigo : {
         type: String,
         required:true,
-        maxlength:100,
+        maxlength:10,
         unique:true
     },
     descripcion : {
@@ -13,19 +18,24 @@ const compraSchema = new Schema({
         required:true,
         maxlength:255,
     },
-    prducto : {
-        type : Schema.ObjectId, 
-        ref: 'producto'
+    producto : {
+        type : Schema.Types.ObjectId, 
+        ref: 'producto',
+        required: true
     },
     cantidad : {
         type: Number,
-        required:true,
-        default: 0
+        default: 0,
+        required:true
     },
     total : {
         type: Number,
-        required:true,
-        default: 0
+        default: 0,
+        required:true
+    },
+    estado : {
+        type: Number,
+        default: 1
     },
     createdAt: {
         type: Date,
@@ -33,6 +43,6 @@ const compraSchema = new Schema({
     }
 });
 
-const Compra = mongoose.model('categoria',compraSchema);
+const Compra = mongoose.model('compra',compraSchema);
 
 module.exports = Compra

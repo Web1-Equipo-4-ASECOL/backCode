@@ -1,39 +1,10 @@
+const models = require('../models');
+const bcrypt = require('bcryptjs');
+const token = require('../services/token');
 
-// const UsuarioCtrl = require('../routes')
-const models = require('../models')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+//privado
 
-// UsuarioCtrl.add = async(req,res) =>{
-//     const {name,email,password} = req.body
-//     const NewUsuario = new Usuario({
-//         name,
-//         email,
-//         password
-//     })
-//     const emailUsuario = await models.Usuario.findOne({email:email})
-//     if(emailUsuario){
-//         res.json({
-//             mensaje: 'El correo ya existe'
-//         })
-//     }
-//     else{
-//         NewUsuario.password = await bcrypt.hash(password,10)
-//         const token =  jwt.sign({id: NewUsuario._id}, 'Secreta')
-//         await NewUsuario.save()
-//         res.json({
-//             // mensaje : 'Bienvenido',
-//             id:NewAdmin._id,
-//             name: NewAdmin.name,
-//             token
-//         })
-
-//     }
-// }
-
-
-
-// module.exports = UsuarioCtrl
+//publica
 module.exports = {
     add : async(req,res,next) =>{
         try {
@@ -157,3 +128,4 @@ module.exports = {
         }
     }
 }
+
